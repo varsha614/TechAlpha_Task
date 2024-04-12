@@ -1,12 +1,14 @@
 def fibonacci_generator(n):
-    prevNum = 0
-    currentNum = 1
-    for i in range(1, n):
-        prevprevNum = prevNum
-        prevNum = currentNum
-        currentNum = prevNum + prevprevNum
-    return currentNum
+    fibonacci_sequence = [0, 1]  # Initialize the sequence with the first two Fibonacci numbers
+    
+    # Generate Fibonacci sequence up to the nth term
+    for i in range(2, n):
+        next_fibonacci = fibonacci_sequence[-1] + fibonacci_sequence[-2]
+        fibonacci_sequence.append(next_fibonacci)
+    
+    return fibonacci_sequence
 
-if __name__ == "__main__":
-    num = int(input("Enter a number: "))
-    print(f"Fibonacci sequence up to the {num} th number: {fibonacci_generator(num)}")
+n = int(input("Enter a number: "))
+fibonacci_sequence = fibonacci_generator(n)
+print("Fibonacci sequence up to the", n, "th term:")
+print(fibonacci_sequence)
